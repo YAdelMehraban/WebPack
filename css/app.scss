@@ -9,9 +9,9 @@ body {
 h1 {
   padding: 15px;
 
-  border: {
-    color: red;
-    style: solid;
-    width: 1px;
-  }
+  background: linear-gradient(to top, black, white);
+  display: flex;
+  transition: transform 1s;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }

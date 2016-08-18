@@ -19,6 +19,7 @@
     // Disable `no-console` rule
     "linebreak-style": "off",
     "no-console": 0,
+    "max-len": 0,
     // Give a warning if identifiers contain underscores
     "no-underscore-dangle": 1,
     // Default to single quotes and raise an error if something
