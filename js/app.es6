@@ -1,5 +1,5 @@
 import '../css/bootstrap.css';
-import '../css/app.css';
+import '../css/app.scss';
 import { login } from './login';
 
 login('admin', 'alpha');
