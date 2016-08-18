@@ -1,13 +1,18 @@
 var path = require('path');
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   context: path.resolve('js'),
   entry: ['./utils', './app'],
   output: {
-    path: path.resolve('build/js/'),
-    publicPath: '/public/assets/js/',
+    path: path.resolve('build/'),
+    publicPath: '/public/assets/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new ExtractTextPlugin('style.css')
+  ],
   devServer: {
     contentBase: 'public'
   },
@@ -16,9 +21,21 @@ module.exports = {
       { test: /\.js?$/, loader: 'eslint-loader', exclude: 'node_modules' }
     ],
     loaders: [
-      { test: /\.es6$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.css$/, exclude: /node_modules/, loader: 'style-loader!css-loader' },
-      { test: /\.scss$/, exclude: /node_modules/, loader: 'style-loader!css-loader!sass-loader' }
+      {
+        test: /\.es6$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
+      }
     ]
   },
   resolve: {
